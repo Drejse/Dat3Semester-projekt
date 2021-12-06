@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MovieList } from "../movieComponents/MovieList";
-import { SearchBox } from "./SearchBox";
+
 import { MovieListHeading } from "./MovieListHeading";
 import { AddFavorites } from "./AddFavorites";
 import RemoveFavorites from "./RemoveFavorites";
@@ -57,13 +57,11 @@ const Movies = () => {
   return (
     <div className="movies">
       <h4>MOVIES</h4>
-      <div className="container-fluid movie-app">
+      
+      <div className="container-fluid movie-app col col-sm">
         <div className="row d-flex align-items-center mt-4 mb-4">
           <MovieListHeading heading="Movies" />
-          <SearchBox
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-          />
+          
         </div>
         <div className=" d-flex justify-content-center row  col-lg-12">
           <MovieList

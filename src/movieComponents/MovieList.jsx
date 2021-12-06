@@ -8,7 +8,7 @@ export const MovieList = (props) => {
       {props.movies.map((movie, index) => (
         <div
           className=" image-container d-flex justify-content-start m-3"
-          style={{ width: "250px" }}
+          style={{ width: "250px",paddingTop:'100px' }}
         >
           <img
             className="card-img-top"

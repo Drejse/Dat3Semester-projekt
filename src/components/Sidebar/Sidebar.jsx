@@ -3,13 +3,15 @@ import { SidebarData } from "./SidebarData";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { IconContext } from "react-icons/lib";
+import "bootstrap/dist/css/bootstrap.min.css";
 //import LogIn from "../Login";
 
 const Sidebar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <nav className="nav-menu">
+        
+        <nav className="nav-menu sm-6 md-4 lg-2">
           <ul nav-menu-items>
             {SidebarData.map((item, index) => {
               return (

@@ -8,7 +8,9 @@ import Nav from "./components/Header";
 import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import Admin from "./components/Admin";
+import TopIdbm from "./components/TopImdb";
 import Sidebar from "./components/Sidebar/Sidebar";
+import {Grid} from '@mui/material';
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,7 +42,16 @@ function App() {
         user={user}
         changeLoginStatus={changeLoginStatus}
       />
-      <Sidebar />
+      <Grid container>
+        <Grid item sm={2}><Sidebar /></Grid>
+        <Grid item sm={10}>
+
+        <Route path="/movies" component={Movies} />
+        <Route path="/favorites" exact component={Favorites} />
+        <Route path="/topidbm" exact component={TopIdbm} />
+        </Grid>
+        </Grid>
+      
       <div>
         <Switch>
           <Route path="/" exact component={Home}>
@@ -51,9 +62,7 @@ function App() {
             )}
           </Route>
 
-          <Route path="/movies" component={Movies} />
-
-          <Route path="/favorites" exact component={Favorites} />
+          
           <PrivateRoute
             path="/admin"
             loggedIn={loggedIn}

@@ -42,8 +42,8 @@ export default function LogIn(props) {
     <div
       style={{ alignItems: "center", display: "flex", flexDirection: "column" }}
     >
-      <h2 style={{ margin: "30px" }}>Login</h2>
-      <Form className="form-group mb-3" onChange={onChange}>
+      <h2 style={{ marginTop: "100px" }}>Login</h2>
+      <Form className="form-group mb-3 mt-3" onChange={onChange}>
         <Form.Group className="mb-3" controlId="formBasicUsername">
           <input
             className="form-control"

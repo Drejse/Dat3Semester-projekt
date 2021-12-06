@@ -1,7 +1,11 @@
 import React from "react";
 
-const TopImdb = () => {
-  return <h4>TOP IMDB</h4>;
+const TopIdbm = () => {
+  return (
+    <div className="topidbm">
+      <h1 style={{ color: "black" }}>Hej TopIdbm</h1>
+    </div>
+  );
 };
 
-export default TopImdb;
+export default TopIdbm;
