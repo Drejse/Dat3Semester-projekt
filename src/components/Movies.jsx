@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { MovieList } from "../movieComponents/MovieList";
-
 import { MovieListHeading } from "./MovieListHeading";
 import { AddFavorites } from "./AddFavorites";
 import RemoveFavorites from "./RemoveFavorites";
+import { InputBase,makeStyles } from "@material-ui/core";
+import {Search} from '@material-ui/icons';
+import {Grid} from '@mui/material';
+
+const useStyles = makeStyles((theme) => ({
+  search: {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: ('#696969',0.15),
+    width: '100%',
+    },
+    input: {
+      color: '#99999',
+      marginLeft: theme.spacing(1),
+    }
+
+  }))
+
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
   const [favorites, setFavorites] = useState([]);
-
+  const [searchValue, setSearchValue] = useState("");
   const getMovieRequest = async (searchValue) => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=c31fede9`;
     console.log(url);
@@ -54,34 +70,45 @@ const Movies = () => {
     localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
   };
 
+  const classes = useStyles();
+
   return (
     <div className="movies">
-      <h4>MOVIES</h4>
       
-      <div className="container-fluid movie-app col col-sm">
-        <div className="row d-flex align-items-center mt-4 mb-4">
-          <MovieListHeading heading="Movies" />
+  
           
-        </div>
-        <div className=" d-flex justify-content-center row  col-lg-12">
+            <MovieListHeading heading="Movies" />
+            <div className={classes.search}>  
+            
+          <Search searchValue={searchValue}
+            setSearchValue={setSearchValue} />
+          <InputBase placeholder="Enter Keywords.." className={classes.input}
+          /*value={props.value}*/
+          onChange={(event) => setSearchValue(event.target.value)}/>
+          </div>
+          
+          
+        <div className="row m-2">
           <MovieList
             movies={movies}
             handleFavoriteClick={addFavoriteMovie}
             favoriteComponent={AddFavorites}
-          />
+            />
         </div>
-        <div className="row d-flex align-items-center mt-4 mb-4">
+        <div className="row d-flex align-items-center mt-4 ">
           <MovieListHeading heading="Favorites" />
         </div>
-        <div className="row">
+        <div className="row m-2">
           <MovieList
             movies={favorites}
             handleFavoriteClick={removeFavoriteMovie}
             favoriteComponent={RemoveFavorites}
-          />
+            />
         </div>
-      </div>
-    </div>
+            
+            
+        </div>
+    
   );
 };
 

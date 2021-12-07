@@ -45,10 +45,9 @@ function App() {
       <Grid container>
         <Grid item sm={2}><Sidebar /></Grid>
         <Grid item sm={10}>
-
-        <Route path="/movies" component={Movies} />
-        <Route path="/favorites" exact component={Favorites} />
-        <Route path="/topidbm" exact component={TopIdbm} />
+          <Route path="/movies" component={Movies} />
+          <Route path="/favorites" exact component={Favorites} />
+          <Route path="/topidbm" exact component={TopIdbm} />
         </Grid>
         </Grid>
       

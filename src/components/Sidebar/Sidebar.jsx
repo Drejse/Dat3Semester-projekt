@@ -11,7 +11,7 @@ const Sidebar = () => {
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
         
-        <nav className="nav-menu sm-6 md-4 lg-2">
+        <nav className="nav-menu">
           <ul nav-menu-items>
             {SidebarData.map((item, index) => {
               return (

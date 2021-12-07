@@ -1,17 +1,20 @@
 import React from "react";
 
+
 export const MovieList = (props) => {
   const FavoriteComponent = props.favoriteComponent;
 
   return (
     <>
+      
       {props.movies.map((movie, index) => (
+          
         <div
-          className=" image-container d-flex justify-content-start m-3"
-          style={{ width: "250px",paddingTop:'100px' }}
+          className=" image-container d-flex justify-content-start mt-5"
+          style={{ width: "200px" }}
         >
           <img
-            className="card-img-top"
+            className="card-img"
             key={index}
             src={movie.Poster}
             alt="movie"
@@ -22,6 +25,7 @@ export const MovieList = (props) => {
           >
             <FavoriteComponent />
           </div>
+          
         </div>
       ))}
     </>
