@@ -1,4 +1,5 @@
 import React from "react";
+import AddArrangement from "../components/AddArrangement";
 
 
 export const MovieList = (props) => {
@@ -19,6 +20,9 @@ export const MovieList = (props) => {
             src={movie.Poster}
             alt="movie"
           ></img>
+          <div>
+          <AddArrangement movie={movie} />
+          </div>
           <div
             onClick={() => props.handleFavoriteClick(movie)}
             className="overlay d-flex align-items-center justify-content-center"
