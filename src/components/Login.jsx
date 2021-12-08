@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import apiFacade from "../Facades/apiFacade";
+
 
 export default function LogIn(props) {
   const init = { username: "", password: "" };
@@ -26,6 +27,12 @@ export default function LogIn(props) {
         setLoginCredentials(init);
       });
   };
+
+  let history = useHistory();
+
+  function navSignUp() {
+    history.push("/signup");
+  }
 
   /*    const login = (user, pass) => {apiFacade.login(user,pass)
       .then(res =>setLoggedIn(true));} 
@@ -66,6 +73,9 @@ export default function LogIn(props) {
         {error && <p style={{ color: "red" }}>{error}</p>}
         <Button variant="primary" onClick={performLogin}>
           Login
+        </Button>
+        <Button variant="primary" onClick={navSignUp}>
+          Sign Up
         </Button>
       </Form>
     </div>

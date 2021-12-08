@@ -6,7 +6,7 @@ export const Home = (props) => {
       {props.user && (
         <div className="home">
           <h4>Welcome {props.user.username}</h4>
-          <p>Roles:</p>
+          <p>Roles: {props.user.role}</p>
           <ul></ul>
         </div>
       )}

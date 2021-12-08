@@ -9,6 +9,11 @@ function addArrangement(body) {
   );
 }
 
+function createUser(body) {
+  const options = makeOptions("POST", body);
+  return fetch(URL + "/adduser", options).then((res) => handleHttpErrors);
+}
+
 function makeOptions(method, body) {
   var opts = {
     method: method,
@@ -32,6 +37,7 @@ function handleHttpErrors(res) {
 
 const userFacade = {
   addArrangement,
+  createUser,
 };
 
 export default userFacade;
