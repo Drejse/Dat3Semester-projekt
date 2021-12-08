@@ -3,24 +3,25 @@ import { MovieList } from "../movieComponents/MovieList";
 import { MovieListHeading } from "./MovieListHeading";
 import { AddFavorites } from "./AddFavorites";
 import RemoveFavorites from "./RemoveFavorites";
-import { InputBase,makeStyles } from "@material-ui/core";
-import {Search} from '@material-ui/icons';
-import {Grid} from '@mui/material';
+import { InputBase, makeStyles, Container } from "@material-ui/core";
+import { Search } from "@material-ui/icons";
+//import {Grid} from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   search: {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: ('#696969',0.15),
-    width: '100%',
-    },
-    input: {
-      color: '#99999',
-      marginLeft: theme.spacing(1),
-    }
-
-  }))
-
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: ("#696969", 0.15),
+    width: "100%",
+  },
+  input: {
+    color: "#99999",
+    marginLeft: theme.spacing(1),
+  },
+  container: {
+    paddingTop: theme.spacing(10),
+  },
+}));
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -73,27 +74,25 @@ const Movies = () => {
   const classes = useStyles();
 
   return (
-    <div className="movies">
-      
-  
-          
-            <MovieListHeading heading="Movies" />
-            <div className={classes.search}>  
-            
-          <Search searchValue={searchValue}
-            setSearchValue={setSearchValue} />
-          <InputBase placeholder="Enter Keywords.." className={classes.input}
-          /*value={props.value}*/
-          onChange={(event) => setSearchValue(event.target.value)}/>
-          </div>
-          
-          
+    <Container className={classes.container}>
+      <div className="movies">
+        <MovieListHeading heading="Movies" />
+        <div className={classes.search}>
+          <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+          <InputBase
+            placeholder="Enter Keywords.."
+            className={classes.input}
+            /*value={props.value}*/
+            onChange={(event) => setSearchValue(event.target.value)}
+          />
+        </div>
+
         <div className="row m-2">
           <MovieList
             movies={movies}
             handleFavoriteClick={addFavoriteMovie}
             favoriteComponent={AddFavorites}
-            />
+          />
         </div>
         <div className="row d-flex align-items-center mt-4 ">
           <MovieListHeading heading="Favorites" />
@@ -103,12 +102,10 @@ const Movies = () => {
             movies={favorites}
             handleFavoriteClick={removeFavoriteMovie}
             favoriteComponent={RemoveFavorites}
-            />
+          />
         </div>
-            
-            
-        </div>
-    
+      </div>
+    </Container>
   );
 };
 

@@ -10,7 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Admin from "./components/Admin";
 import TopIdbm from "./components/TopImdb";
 import Sidebar from "./components/Sidebar/Sidebar";
-import {Grid} from '@mui/material';
+import { Grid } from "@mui/material";
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,16 +24,16 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState();
 
-  let savedHistory = useHistory();
+  let history = useHistory();
 
   const changeLoginStatus = (pageToGo) => {
     setLoggedIn(!loggedIn);
-    savedHistory.push(pageToGo);
+    history.push(pageToGo);
   };
 
   useEffect(() => {
     setUser(apiFacade.getUser);
-  }, [loggedIn, savedHistory]);
+  }, [loggedIn, history]);
 
   return (
     <Router>
@@ -43,14 +43,16 @@ function App() {
         changeLoginStatus={changeLoginStatus}
       />
       <Grid container>
-        <Grid item sm={2}><Sidebar /></Grid>
+        <Grid item sm={2}>
+          <Sidebar />
+        </Grid>
         <Grid item sm={10}>
           <Route path="/movies" component={Movies} />
           <Route path="/favorites" exact component={Favorites} />
           <Route path="/topidbm" exact component={TopIdbm} />
         </Grid>
-        </Grid>
-      
+      </Grid>
+
       <div>
         <Switch>
           <Route path="/" exact component={Home}>
@@ -61,7 +63,6 @@ function App() {
             )}
           </Route>
 
-          
           <PrivateRoute
             path="/admin"
             loggedIn={loggedIn}
