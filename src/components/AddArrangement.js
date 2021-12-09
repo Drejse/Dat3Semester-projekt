@@ -20,13 +20,11 @@ const AddArrangement = (props) => {
   const [userName] = useState(getUsername);
 
   const handelSubmit = (e) => {
-    console.log(getUsername);
     e.preventDefault();
 
     //setUsername(getUsername)
     const body = { movieId, userName };
     userFacade.addArrangement(body);
-    console.log(localStorage.getItem("jwtToken"));
     console.log(movieId);
     console.log(userName);
   };
@@ -34,7 +32,7 @@ const AddArrangement = (props) => {
   return (
     <div className="addArrangement">
       <form onSubmit={handelSubmit}>
-        <button>Rent Movie</button>
+        <button>Rent</button>
       </form>
     </div>
   );

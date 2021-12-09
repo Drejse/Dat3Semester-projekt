@@ -21,6 +21,8 @@ import Favorites from "./components/Favorites";
 import Movies from "./components/Movies";
 import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
+import { AddFunds } from "./components/AddFunds";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -52,7 +54,13 @@ function App() {
           <Route path="/movies" component={Movies} />
           <Route path="/favorites" exact component={Favorites} />
           <Route path="/topidbm" exact component={TopIdbm} />
-          <Route path="/profile" exact component={Profile} />
+          <Route path="/profile" exact component={Profile}>
+            {loggedIn ? (
+              <Profile />
+            ) : (
+              <LogIn changeLoginStatus={changeLoginStatus} />
+            )}
+          </Route>
           <Route path="/signup" exact component={SignUp} />
         </Grid>
       </Grid>
@@ -61,7 +69,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home}>
             {loggedIn ? (
-              <Home user={user} />
+              <Home user={user} />,
+              <AddFunds user={user}/>
             ) : (
               <LogIn changeLoginStatus={changeLoginStatus} />
             )}

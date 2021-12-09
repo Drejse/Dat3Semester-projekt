@@ -4,14 +4,33 @@ const URL = SERVER_URL;
 
 function addArrangement(body) {
   const options = makeOptions("POST", body);
-  return fetch(URL + "/api/user/addarrangement", options).then(
-    (res) => handleHttpErrors
-  );
+  return fetch(URL + "/api/user/addarrangement", options)
+  .then(res => handleHttpErrors);
 }
 
 function createUser(body) {
   const options = makeOptions("POST", body);
-  return fetch(URL + "/adduser", options).then((res) => handleHttpErrors);
+  return fetch(URL + "/api/user/adduser", options)
+  .then(res => handleHttpErrors(res));
+}
+
+function addFunds(body) {
+  const options = makeOptions("POST", body);
+  return fetch(URL + "/api/user/addfunds", options)
+  .then((res) => handleHttpErrors);
+}
+
+function getArrangements(userName, test) {
+  const options = makeOptions("GET");
+  return fetch(URL + "/api/user/" + userName, options)
+  .then(res => handleHttpErrors(res))
+  .then((data) => test(data))
+}
+
+function getUserInfo(body) {
+  const options = makeOptions("GET", body);
+  return fetch(URL + "/api/user/userinfo/" + body, options)
+  .then(res => handleHttpErrors(res));
 }
 
 function makeOptions(method, body) {
@@ -38,6 +57,9 @@ function handleHttpErrors(res) {
 const userFacade = {
   addArrangement,
   createUser,
+  addFunds,
+  getArrangements,
+  getUserInfo
 };
 
 export default userFacade;

@@ -20,16 +20,18 @@ export const MovieList = (props) => {
             src={movie.Poster}
             alt="movie"
           ></img>
-          <div>
-          <AddArrangement movie={movie} />
-          </div>
+          
           <div
             onClick={() => props.handleFavoriteClick(movie)}
             className="overlay d-flex align-items-center justify-content-center"
           >
-            <FavoriteComponent />
+
+            <FavoriteComponent movie={movie}/>
           </div>
-          
+<div className="overlayRent d-flex align-items-center justify-content-center">
+
+            <AddArrangement movie={movie} />
+          </div>
         </div>
       ))}
     </>

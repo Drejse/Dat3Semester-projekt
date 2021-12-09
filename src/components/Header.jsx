@@ -50,6 +50,8 @@ const Nav = (props) => {
           <img src="./Stm-logo-final.png"></img>
         </Typography>
         login
+
+        Profile
       </Toolbar>
     </AppBar>
   );
