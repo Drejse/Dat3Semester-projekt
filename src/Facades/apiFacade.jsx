@@ -45,6 +45,7 @@ const apiFacade = () => {
   const logout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("user");
+    window.location.reload()
   };
 
   const fetchData = async () => {

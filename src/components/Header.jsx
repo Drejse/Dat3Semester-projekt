@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 const Nav = (props) => {
   const logout = () => {
     apiFacade.logout();
-    props.changeLoginStatus("/");
   };
 
   const classes = useStyles();
@@ -49,7 +48,7 @@ const Nav = (props) => {
         <Typography variant="h6">
           <img src="./Stm-logo-final.png"></img>
         </Typography>
-        login
+        <button onClick={logout}>Logout</button>
 
         Profile
       </Toolbar>

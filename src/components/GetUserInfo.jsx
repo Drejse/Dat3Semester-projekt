@@ -36,11 +36,6 @@ const GetUserInfo = () => {
         userFacade.getUserInfo(userName)
         .then((res) => setUserInfo((res)))
       }, )
-
-    
-
-      console.log("username" + userName)
-      console.log(JSON.stringify(userInfo))
       
       return (
         <Container className={classes.container}>
