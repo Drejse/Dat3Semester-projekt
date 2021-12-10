@@ -22,6 +22,7 @@ import Movies from "./components/Movies";
 import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
 import { AddFunds } from "./components/AddFunds";
+import GetUserInfo from "./components/GetUserInfo";
 
 
 function App() {
@@ -69,8 +70,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home}>
             {loggedIn ? (
-              <Home user={user} />,
-              <AddFunds user={user}/>
+              <Home user={user} />
             ) : (
               <LogIn changeLoginStatus={changeLoginStatus} />
             )}

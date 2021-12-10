@@ -1,22 +1,15 @@
 import { useEffect, useState } from "react";
 import userFacade from "../Facades/UserFacade";
-import apiFacade from "../Facades/apiFacade";
+
 
 
 const GetArrangements = () => {
 
-    const getUsername = () => {
-        const token = apiFacade.getToken();
-        if (token != null) {
-          const payloadBase64 = apiFacade.getToken().split(".")[1];
-          const decodedClaims = JSON.parse(window.atob(payloadBase64));
-          const username = decodedClaims.username;
-          return username;
-        } else return "";
-      };
+    
+    
 
 
-    const [userName] = useState(getUsername)
+    const [userName] = useState(userFacade.getUsername)
     const [arrangements, setArrangements] = useState([])
 
     const test = (data) => {

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import apiFacade from "./apiFacade";
 import SERVER_URL from "../constant";
 const URL = SERVER_URL;
 
@@ -27,10 +28,11 @@ function getArrangements(userName, test) {
   .then((data) => test(data))
 }
 
-function getUserInfo(body) {
-  const options = makeOptions("GET", body);
-  return fetch(URL + "/api/user/userinfo/" + body, options)
-  .then(res => handleHttpErrors(res));
+function getUserInfo(userName) {
+  const options = makeOptions("GET");
+  return fetch(URL + "/api/user/userinfo/" + userName, options)
+  .then(res => handleHttpErrors(res))
+  //.then((data) => test(data))
 }
 
 function makeOptions(method, body) {
@@ -54,12 +56,23 @@ function handleHttpErrors(res) {
   return res.json();
 }
 
+const getUsername = () => {
+  const token = apiFacade.getToken();
+  if (token != null) {
+    const payloadBase64 = apiFacade.getToken().split(".")[1];
+    const decodedClaims = JSON.parse(window.atob(payloadBase64));
+    const username = decodedClaims.username;
+    return username;
+  } else return "";
+};
+
 const userFacade = {
   addArrangement,
   createUser,
   addFunds,
   getArrangements,
-  getUserInfo
+  getUserInfo,
+  getUsername
 };
 
 export default userFacade;

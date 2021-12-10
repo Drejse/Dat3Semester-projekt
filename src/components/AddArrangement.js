@@ -1,23 +1,14 @@
 import { useState } from "react";
-import apiFacade from "../Facades/apiFacade";
+
 import userFacade from "../Facades/UserFacade";
 
 //import SERVER_URL from "../constant";
 //const URL = SERVER_URL;
 
 const AddArrangement = (props) => {
-  const getUsername = () => {
-    const token = apiFacade.getToken();
-    if (token != null) {
-      const payloadBase64 = apiFacade.getToken().split(".")[1];
-      const decodedClaims = JSON.parse(window.atob(payloadBase64));
-      const username = decodedClaims.username;
-      return username;
-    } else return "";
-  };
 
   const [movieId] = useState(props.movie.imdbID);
-  const [userName] = useState(getUsername);
+  const [userName] = useState(userFacade.getUsername);
 
   const handelSubmit = (e) => {
     e.preventDefault();

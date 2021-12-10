@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
     const init = 0;
     const [userBalance, setUserBalance] = useState("")
-    const [userName] = useState(props.user.username)
+    const [userName] = useState(userFacade.getUsername)
     
     
 

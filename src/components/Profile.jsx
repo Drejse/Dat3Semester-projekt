@@ -1,6 +1,8 @@
 import React from "react";
 import GetArrangements from "./GetArrangements";
 import {makeStyles, Container } from "@material-ui/core";
+import GetUserInfo from "./GetUserInfo";
+import { AddFunds } from "./AddFunds";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -18,7 +20,10 @@ const Profile = () => {
     <Container className={classes.container}>
 
     <div className="profile">
-      
+      <GetUserInfo />
+      <AddFunds />
+      <hr />
+      <h3>Rental History</h3>
       {
         <table class="table">
           <thead>
