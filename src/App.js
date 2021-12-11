@@ -70,7 +70,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home}>
             {loggedIn ? (
-              <Home user={user} />
+              <Profile />
             ) : (
               <LogIn changeLoginStatus={changeLoginStatus} />
             )}

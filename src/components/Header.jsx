@@ -49,8 +49,8 @@ const Nav = (props) => {
           <img src="./Stm-logo-final.png"></img>
         </Typography>
         <button onClick={logout}>Logout</button>
-
-        Profile
+        
+        {props.user && props.user.username}
       </Toolbar>
     </AppBar>
   );

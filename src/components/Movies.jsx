@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { MovieList } from "../movieComponents/MovieList";
 import { MovieListHeading } from "./MovieListHeading";
 import { AddFavorites } from "./AddFavorites";
-import RemoveFavorites from "./RemoveFavorites";
 import { InputBase, makeStyles, Container } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 //import {Grid} from '@mui/material';
@@ -58,15 +57,6 @@ const Movies = () => {
     saveToLocalStorage(newFavoriteList);
   };
 
-  const removeFavoriteMovie = (movie) => {
-    const newFavoriteList = favorites.filter(
-      (favourite) => favourite.imdbID !== movie.imdbID
-    );
-
-    setFavorites(newFavoriteList);
-    saveToLocalStorage(newFavoriteList);
-  };
-
   const saveToLocalStorage = (items) => {
     localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
   };
@@ -92,16 +82,6 @@ const Movies = () => {
             movies={movies}
             handleFavoriteClick={addFavoriteMovie}
             favoriteComponent={AddFavorites}
-          />
-        </div>
-        <div className="row d-flex align-items-center mt-4 ">
-          <MovieListHeading heading="Favorites" />
-        </div>
-        <div className="row m-2">
-          <MovieList
-            movies={favorites}
-            handleFavoriteClick={removeFavoriteMovie}
-            favoriteComponent={RemoveFavorites}
           />
         </div>
       </div>

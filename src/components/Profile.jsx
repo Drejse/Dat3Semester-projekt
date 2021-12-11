@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import GetArrangements from "./GetArrangements";
 import {makeStyles, Container } from "@material-ui/core";
 import GetUserInfo from "./GetUserInfo";
 import { AddFunds } from "./AddFunds";
+import { MovieList } from "../movieComponents/MovieList";
+import RemoveFavorites from "./RemoveFavorites";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -14,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
 const Profile = () => {
 
   const classes = useStyles();
+
+  
 
   return (
     
